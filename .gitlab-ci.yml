@@ -1,0 +1,16 @@
+image: ruby:2.6.3
+
+stages:
+  - test
+
+run-against-browserstack:
+  stage: test
+  before_script:
+    - gem install bundler
+    - bundle install
+  script:
+    - bundle exec rspec
+  only:
+    refs:
+      - master
+  when: manual
